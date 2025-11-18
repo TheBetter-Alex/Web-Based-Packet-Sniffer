@@ -67,6 +67,7 @@ Click ⏸ Stop to stop sniffing
 Make sure you select the correct interface in the web ui, if you dont know which one, try them one by one.
 
 📁 Project Structure
+
 ├── main.py      # Streamlit UI + sniffer logic (threaded + Scapy)
 └── README.md
 
