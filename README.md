@@ -33,15 +33,12 @@ cd web-based-packet-sniffer
 2. Install dependencies
 
 It’s recommended (but not required) to use a virtual environment.
-
 pip install streamlit scapy streamlit-autorefresh
 
 3. Windows-specific (Npcap)
 
 On Windows, you must install Npcap to allow low-level packet capture:
-
 Download and install from: https://npcap.com/
-
 Make sure you check the option that allows WinPcap-compatible mode if needed.
 
 ▶️ Usage
@@ -68,7 +65,8 @@ Make sure you select the correct interface in the web ui, if you dont know which
 
 📁 Project Structure
 
-├── main.py      # Streamlit UI + sniffer logic (threaded + Scapy)
+├── main.py
+
 └── README.md
 
 🔧 Requirements
@@ -76,51 +74,34 @@ Make sure you select the correct interface in the web ui, if you dont know which
 Python 3.x
 
 Libraries:
-
 streamlit
-
 scapy
-
 streamlit-autorefresh
 
 OS & Permissions:
-
 Windows: Npcap installed, run with appropriate privileges
-
 Linux/macOS: typically requires root/admin privileges to open raw sockets
-
 e.g. sudo streamlit run main.py
 
 🧱 How It Works (High-Level)
 
 PacketSnifferThread
-
 Runs AsyncSniffer in a background thread
-
 Pushes captured packets into a queue.Queue with timestamps
 
 Handler
-
 Reads from the queue
-
 Summarizes each packet into a dict: Time, Source, Destination, Protocol, Length, Info, etc.
-
 Keeps a rolling buffer (up to max_packets)
 
 StreamlitUI
-
 Manages Streamlit session state
-
 Sidebar controls: BPF filter, Start/Stop buttons, save button, selectable auto refrech rate.
 
 Main window:
-
 PPS (5s) metric
-
 Dropped packets metric
-
 A pandas.DataFrame showing the latest packets (newest on top)
-
 Uses st_autorefresh to refresh the table when sniffing is running
 
 🤝 Contributing
