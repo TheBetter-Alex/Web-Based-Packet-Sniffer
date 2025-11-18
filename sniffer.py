@@ -319,7 +319,7 @@ class StreamlitUI:
 
         self.ss.setdefault('Handler', Handler())
         self.ss.setdefault('Sniffer', None)
-        self.ss.setdefault('iface', get_if_list()[4])
+        self.ss.setdefault('iface', get_if_list()[0])
         self.ss.setdefault('bpf', "")
         self.ss.setdefault("running", False)
         self.ss.setdefault("auto_refresh", 2000)
@@ -459,4 +459,5 @@ class StreamlitUI:
 
 if __name__ == "__main__":
     ui = StreamlitUI()
+
     ui.start()
